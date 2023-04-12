@@ -10,7 +10,7 @@
     
 - Purpose and Objective:
 
-    Players can play online and offline against each other.
+    Players can play offline against each other.
     
     There are also recordings of the game in which the players can replay their moves to learn from their mistake.
     
