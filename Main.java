@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
+        //testing
         JFrame frame = new JFrame();
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setLayout(new GridBagLayout());
