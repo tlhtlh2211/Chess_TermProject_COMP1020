@@ -6,6 +6,7 @@ import ChessGame.Board;
 
 public class Pawn extends Piece {
     public Pawn(Board board, int column, int row, boolean isWhite){
+        // for testing
         super(board);
         this.column = column;
         this.row = row;
