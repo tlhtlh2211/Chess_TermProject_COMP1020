@@ -1,8 +1,8 @@
-package Piece;
+package Chess_TermProject_COMP1020.Piece;
 
 import java.awt.image.BufferedImage;
 
-import ChessGame.Board;
+import Chess_TermProject_COMP1020.ChessGame.Board;
 
 public class Pawn extends Piece {
     public Pawn(Board board, int column, int row, boolean isWhite){
@@ -24,13 +24,19 @@ public class Pawn extends Piece {
         if (this.column == column && row == this.row - color && board.getPiece(column, row) == null){
             return true;
         }
-        if (firstMove && this.column == column && row == this.row - color * 2 && board.getPiece(column, row) == null && board.getPiece(column, row * color) == null){
+        if (firstMove && this.column == column && row == this.row - color * 2 && board.getPiece(column, row) == null && board.getPiece(column, row + color) == null){
             return true;
         }
         if (column == this.column - 1 && row == this.row - color && board.getPiece(column, row) != null){
             return true;
         }
         if (column == this.column + 1 && row == this.row - color && board.getPiece(column, row) != null){
+            return true;
+        }
+        if (board.getTileNum(column, row) == board.enPassant && column == this.column - 1 && row == this.row - color && board.getPiece(column, row + color) != null){
+            return true;
+        }
+        if (board.getTileNum(column, row) == board.enPassant && column == this.column + 1 && row == this.row - color && board.getPiece(column, row + color) != null){
             return true;
         }
         return false;

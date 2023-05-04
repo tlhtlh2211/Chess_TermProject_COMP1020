@@ -1,4 +1,4 @@
-package ChessGame;
+package Chess_TermProject_COMP1020.ChessGame;
 
 import javax.swing.*;
 

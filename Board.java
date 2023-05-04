@@ -1,15 +1,18 @@
-package ChessGame;
+package Chess_TermProject_COMP1020.ChessGame;
+
 
 import javax.swing.*;
+
+import Chess_TermProject_COMP1020.Piece.Bishop;
+import Chess_TermProject_COMP1020.Piece.King;
+import Chess_TermProject_COMP1020.Piece.Knight;
+import Chess_TermProject_COMP1020.Piece.Pawn;
+import Chess_TermProject_COMP1020.Piece.Piece;
+import Chess_TermProject_COMP1020.Piece.Queen;
+import Chess_TermProject_COMP1020.Piece.Rook;
+
 import java.awt.*;
 import java.util.*;
-import Piece.Piece;
-import Piece.Knight;
-import Piece.Pawn;
-import Piece.Bishop;
-import Piece.King;
-import Piece.Queen;
-import Piece.Rook;
 
 public class Board extends JPanel {
     public int titleSize = 85;
@@ -22,6 +25,10 @@ public class Board extends JPanel {
     public Piece movePiece;
     
     Mouse_Move mouse = new Mouse_Move(this);
+
+    public ChessScanner chessScanner = new ChessScanner(this);
+
+    public int enPassant = -1;
 
 
     public Board(){
@@ -43,20 +50,65 @@ public class Board extends JPanel {
     }
 
     public void Move(Movement move){
+        if (move.piece.name.equals("Pawn")){
+            movePawn(move);
+        }
+        else if (move.piece.name.equals("King")){
+            moveKing(move);
+        }
+            move.piece.column = move.newColumn;
+            move.piece.row = move.newRow;
 
-        move.piece.column = move.newColumn;
-        move.piece.row = move.newRow;
+            move.piece.xPOS = move.newColumn * titleSize;
+            move.piece.yPOS = move.newRow * titleSize;
 
-        move.piece.xPOS = move.newColumn * titleSize;
-        move.piece.yPOS = move.newRow * titleSize;
+            move.piece.firstMove = false;
 
-        move.piece.firstMove = false;
+            Remove(move.newPiece);
+    }
+    private void moveKing(Movement move){
+        if (Math.abs(move.piece.column - move.newColumn) == 2){
+            Piece rook;
+            if (move.piece.column < move.newColumn){
+                rook = getPiece(7, move.piece.row);
+                rook.column = 5;
+            }
+            else{
+                rook = getPiece(0, move.piece.row);
+                rook.column = 3;
+            }
+            rook.xPOS = rook.column * titleSize;
+        }
+    }
+    private void movePawn(Movement move){
 
-        Remove(move);
+        int colorIndex = move.piece.isWhite ? 1 : -1;
+
+        if (getTileNum(move.newColumn, move.newRow) == enPassant){
+            move.newPiece = getPiece(move.newColumn, move.newRow + colorIndex);
+        }
+        if (Math.abs(move.piece.row - move.newRow) == 2){
+            enPassant = getTileNum(move.newColumn, move.newRow + colorIndex);
+        }
+        else{
+            enPassant = -1;
+        }
+
+        colorIndex = move.piece.isWhite ? 0 : 7;
+        if (move.newRow == colorIndex){
+            promotePawn(move);
+        }
+    }
+    public int getTileNum(int column, int row){
+        return row * this.rows * column; 
+    }
+    private void promotePawn(Movement move){
+        pieceList.add(new Queen(this, move.newColumn, move.newRow, move.piece.isWhite));
+        Remove(move.piece);
     }
 
-    public void Remove(Movement move){
-        pieceList.remove(move.newPiece);
+    public void Remove(Piece piece){
+        pieceList.remove(piece);
     }
 
     public boolean Team(Piece piece1, Piece piece2){
@@ -75,7 +127,17 @@ public class Board extends JPanel {
         if (move.piece.Collide(move.newColumn, move.newRow)){
             return false;
         }
+        if (chessScanner.isKingChecked(move)){
+            return false;
+        }
         return true;
+    }
+
+    Piece findKing(boolean isWhite){
+        for (Piece piece : pieceList){
+            if (isWhite == piece.isWhite && piece.name.equals("King")) return piece;
+        }
+        return null;
     }
     public void addPiece(){
         // add King

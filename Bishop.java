@@ -1,8 +1,8 @@
-package Piece;
+package Chess_TermProject_COMP1020.Piece;
 
 import java.awt.image.BufferedImage;
 
-import ChessGame.Board;
+import Chess_TermProject_COMP1020.ChessGame.Board;
 
 public class Bishop extends Piece {
     public Bishop(Board board, int column, int row, boolean isWhite){
