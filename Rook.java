@@ -1,20 +1,22 @@
-package Piece;
-
 import java.awt.image.BufferedImage;
 
-import ChessGame.Board;
-
-public class Rook extends Piece {
-    public Rook(Board board, int column, int row, boolean isWhite){
+public class Rook extends Piece{
+    Rook(Board board, int col, int row, boolean isWhite){
         super(board);
-        this.column = column;
+        this.col = col;
         this.row = row;
-        this.xPOS = column * board.titleSize;
-        this.yPOS = row * board.titleSize;
-
         this.isWhite = isWhite;
-        this.name = "Rook";
 
-        this.sprite = sheet.getSubimage(4 * sheetScale, isWhite ? 0 : sheetScale, sheetScale, sheetScale).getScaledInstance(board.titleSize, board.titleSize, BufferedImage.SCALE_SMOOTH);
+        this.x_pos = col * board.title_size;
+        this.y_pos = row * board.title_size;
+
+        int y_pos_sprite;
+        if (isWhite){
+            y_pos_sprite = 0;
+        } else {
+            y_pos_sprite = scale;
+        }
+        this.sprite = sheet.getSubimage(scale * 4, y_pos_sprite, scale, scale).getScaledInstance(board.title_size, board.title_size, BufferedImage.SCALE_SMOOTH);
+
     }
 }
