@@ -9,135 +9,215 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Main extends JFrame implements ActionListener{
-    public static boolean isWhiteTurn;
-    public static boolean canPlay = false;
-    static int colorChange = 0;
-    static boolean justClicked = true;
-    public static void main(String[] args){
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run(){
-                Main lg = new Main();
-                lg.setVisible(true);
-            }
-        });
-    }
-    final JTextField text;
-    public Main(){
-        setTitle("CHESS GAME");
-        setSize(500, 500);
-        setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel();
-        getContentPane().add(panel);
+        private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton2;
+        private javax.swing.JButton jButton3;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JLabel jLabel2;
+        private javax.swing.JPanel jPanel1;
+        private javax.swing.JSeparator jSeparator1;
 
-        //JLable name = new JLabel("USERNAME: ");
-        JLabel name1 = new JLabel();
-        name1.setText("PLAYER'S NAME: ");
-        text = new JTextField(25);
+        public static boolean isWhiteTurn;
+        public static boolean canPlay = false;
+        static int colorChange = 0;
+        static boolean justClicked = true;
+        public static boolean ini;
 
-        panel.add(name1);
-        panel.add(text);
-
-        JLabel name2 = new JLabel("BLACK OR WHITE?", SwingConstants.CENTER);
-        name2.setFont(new Font("Serif", Font.PLAIN, 16));
-        name2.setPreferredSize(new Dimension(400, 50));
-
-        panel.add(name2);
-
-        JButton button_black = new JButton("BLACK");
-        button_black.setPreferredSize(new Dimension(200, 50));
-        button_black.setOpaque(true);
-        button_black.setContentAreaFilled(true);
-        button_black.setBorderPainted(false);
-        button_black.setFocusPainted(false);
-        button_black.setBackground(new Color(188, 198, 193)); 
-        button_black.setForeground(Color.white);
-        panel.add(button_black);
-
-        JButton button_white = new JButton("WHITE");
-        button_white.setPreferredSize(new Dimension(200, 50));
-        button_white.setOpaque(true);
-        //button_white.setContentAreaFilled(true);
-        button_white.setBorderPainted(false);
-        button_white.setFocusPainted(false);
-        button_white.setBackground(new Color(188, 198, 193)); 
-        button_white.setForeground(Color.white);
-        panel.add(button_white);
-
-        JButton playChess = new JButton("KLICK TO PLAY GAME");
-        playChess.setPreferredSize(new Dimension(400, 50));
-        panel.add(playChess);
-
-        JLabel Dashboard = new JLabel("DASHBOARD", SwingConstants.CENTER);
-        Dashboard.setPreferredSize(new Dimension(400, 50));
-
-        panel.add(Dashboard);
-
-        JLabel his = new JLabel();
-
-        for (int i = 0; i < History.history.size(); i++){
-            his.setText(History.history.get(i).name + "-------------------------------" + History.history.get(i).score);
-            System.out.println(History.history.get(i).name);
-            panel.add(his);
+        public Main() {
+            initComponents1();
         }
+
+        @SuppressWarnings("unchecked")
+                               
+        private void initComponents1() {
+    
+            jPanel1 = new javax.swing.JPanel();
+            jLabel1 = new javax.swing.JLabel();
+            jSeparator1 = new javax.swing.JSeparator();
+            jLabel2 = new javax.swing.JLabel();
+            jButton1 = new javax.swing.JButton();
+            jButton2 = new javax.swing.JButton();
+            jButton3 = new javax.swing.JButton();
+            
+    
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    
+            jPanel1.setBackground(new java.awt.Color(242,219,199));
+    
+            jLabel1.setFont(new java.awt.Font("Chalkduster", 1, 60)); // NOI18N
+            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jLabel1.setText("CHESS GAME");
+    
+            jLabel2.setFont(new java.awt.Font("Herculanum", 0, 24)); // NOI18N
+            jLabel2.setText("BLACK OR WHITE");
+    
+            jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+            jButton1.setText("WHITE");
+            jButton1.setOpaque(true);
+            jButton1.setContentAreaFilled(true);
+            jButton1.setBorderPainted(false);
+            jButton1.setFocusPainted(false);
+            jButton1.setBackground(new Color(188, 198, 193)); 
+            jButton1.setForeground(Color.white);
+            
+    
+            jButton2.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 24)); // NOI18N
+            jButton2.setText("BLACK");
+            jButton2.setOpaque(true);
+            jButton2.setContentAreaFilled(true);
+            jButton2.setBorderPainted(false);
+            jButton2.setFocusPainted(false);
+            jButton2.setBackground(new Color(188, 198,  193)); 
+            jButton2.setForeground(Color.white);
+            
+    
+            jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+            jButton3.setText("CLICK TO PLAY GAME");
+            jButton3.addActionListener(this);
+           
+    
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(176, 176, 176)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(18, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(149, 149, 149)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(189, 189, 189))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(309, 309, 309))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(14, 14, 14))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(209, 209, 209))))
+            );
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(19, 19, 19)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addGap(34, 34, 34)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58))
+            );
+    
+            //jButton2.getAccessibleContext().setAccessibleName("jButton2");
+    
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+    
+            pack();
+            ActionListener button = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == jButton2){
+                        isWhiteTurn = false;
+                        canPlay = true;
+                        if (colorChange == 0){
+                            jButton2.setBackground(Color.BLACK);
+                            colorChange = -1;
+                            justClicked = true;
+                        }
+                        else if (colorChange == 1 && justClicked == false){
+                            jButton2.setBackground(Color.BLACK);
+                            jButton1.setBackground(new Color(188, 198, 193));
+                            colorChange = -1;
+                            justClicked = true;
+                        }
+                        //button_black.addActionListener(this);
+                    }
+                    else if (e.getSource() == jButton1){
+                        isWhiteTurn = true;
+                        canPlay = true;
+                        if (colorChange == 0){
+                            jButton1.setBackground(Color.BLACK);
+                            colorChange = 1;
+                            justClicked = false;
+                        }
+                        else if (colorChange == -1 && justClicked == true){
+                            jButton1.setBackground(Color.BLACK);
+                            jButton2.setBackground(new Color(188, 198, 193));
+                            colorChange = 1;
+                            justClicked = false;
+    
+                        }
+                        //button_white.addActionListener(this);
+                    }
+                    ini = isWhiteTurn;
+                }
+            };
+            
+            jButton1.addActionListener(button);
+            jButton2.addActionListener(button);  
+        }// </editor-fold>   
         
-        add(panel, BorderLayout.CENTER);
 
-        playChess.addActionListener(this);
-
-
-
-        ActionListener button = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button_black){
-                    isWhiteTurn = false;
-                    canPlay = true;
-                    if (colorChange == 0){
-                        button_black.setBackground(Color.BLACK);
-                        colorChange = -1;
-                        justClicked = true;
+    public static void main(String[] args){
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
                     }
-                    else if (colorChange == 1 && justClicked == false){
-                        button_black.setBackground(Color.BLACK);
-                        button_white.setBackground(new Color(188, 198, 193));
-                        colorChange = -1;
-                        justClicked = true;
-                    }
-                    //button_black.addActionListener(this);
                 }
-                else if (e.getSource() == button_white){
-                    isWhiteTurn = true;
-                    canPlay = true;
-                    if (colorChange == 0){
-                        button_white.setBackground(Color.BLACK);
-                        colorChange = 1;
-                        justClicked = false;
-                    }
-                    else if (colorChange == -1 && justClicked == true){
-                        button_white.setBackground(Color.BLACK);
-                        button_black.setBackground(new Color(188, 198, 193));
-                        colorChange = 1;
-                        justClicked = false;
-
-                    }
-                    //button_white.addActionListener(this);
-                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-        };
-        button_black.addActionListener(button);
-        button_white.addActionListener(button);
         
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new Main().setVisible(true);
+                }
+            });
     }
+
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //this.remove(this.button);
         if (canPlay){
-            String txt = text.getText();
+            //String txt = text.getText();
             //History t = new History(txt, 0);
-            History.addName(txt, 0);
+            //History.addName(txt, 0);
             this.dispose();
-            new Frame(txt);
+            new Frame("");
         //frame.setVisible(true);
         }
         else{
@@ -146,33 +226,110 @@ public class Main extends JFrame implements ActionListener{
         }
         
     }
-}
 class Frame extends JFrame{
-    public Frame(String text){
-            
-        JFrame frame = new JFrame();
-        frame.getContentPane().setBackground(Color.BLACK);
-        frame.setLayout(new GridBagLayout());
-        setSize(1000, 1000);
-        frame.setMinimumSize(new Dimension(1000, 1000));
-        frame.setLocationRelativeTo(null);
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private void initComponents2() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Board board = new Board();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel2.setBackground(new java.awt.Color(226, 223, 203));
+
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton1.setText("UNDO");
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton2.setText("RESET");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(279, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 46, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        ActionListener button = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "YOU ARE TRYING TO UNDO",
+               "UNDO", JOptionPane.WARNING_MESSAGE);
+               board.undoPiece();
+                }
+        };
+
+        ActionListener restart = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "YOU ARE TRYING TO RESTART",
+               "RESTART", JOptionPane.WARNING_MESSAGE);
+               board.Restart();
+                }
+        };
+
+        jButton1.addActionListener(button);
+        jButton2.addActionListener(restart);
+
+        //layout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        pack();
         
-        Board board = new Board();   
-        frame.add(board);
-            
-        //frame.addMouseListener(board.mouse);
-        //frame.addMouseMotionListener(board.mouse);
-        frame.setTitle("CHESS GAME OF " + text);
-        frame.setVisible(true);
-
-        JFrame open = frame;
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e){
-                open.setVisible(true);
-            } 
-        });
+    }// </editor-fold> 
+    public Frame(String text){
+        initComponents2();
+        setVisible(true);
     }
+}
 }

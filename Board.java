@@ -31,6 +31,12 @@ public class Board extends JPanel {
     public int enPassant = -1;
 
 
+    Stack<Movement> undoList = new Stack<>();
+    Stack<Integer> taskPerformed = new Stack<>();
+    Stack<String> taskName = new Stack<>();
+    public boolean currentColor = Main.isWhiteTurn;
+
+
     public Board(){
         this.setPreferredSize(new Dimension(column * titleSize, rows * titleSize));
         
@@ -40,13 +46,85 @@ public class Board extends JPanel {
 
         addPiece();
     }
-    
+    public void Restart(){
+        pieceList.clear();
+        addPiece();
+        Main.isWhiteTurn = Main.ini;
+    }
 
     public Piece getPiece(int column, int row){
         for (Piece piece : pieceList){
             if (piece.column == column && piece.row == row) return piece;
         }
         return null;
+    }
+
+    public void addStep(Movement move){
+        undoList.add(move);
+    }
+
+    public void undoPiece(){
+        int step = taskPerformed.pop();
+        System.out.print(step);
+        for (int i = 0; i < step; i++){
+            Movement move = undoList.pop();
+            String task = taskName.pop();
+            if (task.equals("add")){
+                System.out.print("add");
+                if (move.piece.name.equals("Pawn")){
+                    //System.out.println("times" + move.piece.times);
+                    pieceList.add(new Pawn(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    if (move.piece.times > 1){
+                        getPiece(move.preColumn, move.preRow).firstMove = false;
+                    }
+                    move.piece.times -= 1;
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+                else if (move.piece.name.equals("Queen")){
+                    pieceList.add(new Queen(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+                else if (move.piece.name.equals("Bishop")){
+                    pieceList.add(new Bishop(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+                else if (move.piece.name.equals("King")){
+                    pieceList.add(new King(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+                else if (move.piece.name.equals("Knight")){
+                    pieceList.add(new Knight(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+                else if (move.piece.name.equals("Rook")){
+                    pieceList.add(new Rook(this, move.preColumn, move.preRow, move.piece.isWhite));
+                    Remove(getPiece(move.newColumn, move.newRow));
+                }
+            }
+            else if (task.equals("remove")){
+                System.out.print("remove");
+                //move.piece.column = move.newColumn;
+                //move.piece.row = move.newRow;
+                pieceList.add(move.piece);
+            }
+            else if (task.equals("romote")){
+                System.out.print("promote");
+                pieceList.add(new Pawn(this, move.preColumn, move.preRow, move.piece.isWhite));
+                if (move.piece.times > 1){
+                    getPiece(move.preColumn, move.preRow).firstMove = false;
+                }
+                move.piece.times -= 1;
+                Remove(getPiece(move.newColumn, move.newRow));
+            }
+            else if (task.equals("enpassant")){
+
+            }
+            else if (task.equals("castling")){
+
+            }
+            
+        }
+        Main.isWhiteTurn = !Main.isWhiteTurn;
     }
 
     public void Move(Movement move){
@@ -64,7 +142,23 @@ public class Board extends JPanel {
 
             move.piece.firstMove = false;
 
-            Remove(move.newPiece);
+            if (move.piece.name.equals("Pawn")){
+                move.piece.times += 1;
+        }
+        System.out.print(move.piece.name);
+        System.out.print(move.piece);
+        System.out.print(move.piece.column);
+        System.out.println(move.piece.row);
+        addStep(move);
+        taskName.add("add");
+        taskPerformed.add(1);
+
+        if (move.newPiece != null){
+            addStep(new Movement(this, move.newPiece, move.newPiece.column, move.newPiece.row));
+            taskPerformed.set(taskPerformed.size()-1,taskPerformed.peek() + 1);
+            taskName.add("remove"); 
+        }
+        Remove(move.newPiece);
     }
     private void moveKing(Movement move){
         if (Math.abs(move.piece.column - move.newColumn) == 2){
@@ -87,6 +181,7 @@ public class Board extends JPanel {
         if (getTileNum(move.newColumn, move.newRow) == enPassant){
             move.newPiece = getPiece(move.newColumn, move.newRow + colorIndex);
         }
+
         if (Math.abs(move.piece.row - move.newRow) == 2){
             enPassant = getTileNum(move.newColumn, move.newRow + colorIndex);
         }
@@ -97,6 +192,8 @@ public class Board extends JPanel {
         colorIndex = move.piece.isWhite ? 0 : 7;
         if (move.newRow == colorIndex){
             promotePawn(move);
+            taskPerformed.set(taskPerformed.size()-1,taskPerformed.peek() + 1);
+            taskName.add("promote"); 
         }
     }
     public int getTileNum(int column, int row){
@@ -180,7 +277,7 @@ public class Board extends JPanel {
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < column; j++){
                 if ((i+j) % 2 == 0) g_2d.setColor(Color.WHITE);
-                else g_2d.setColor(new Color(236, 148, 148));
+                else g_2d.setColor(new Color(242,219,199));
                 g_2d.fillRect(j * titleSize, i * titleSize, titleSize, titleSize);
             }
 
