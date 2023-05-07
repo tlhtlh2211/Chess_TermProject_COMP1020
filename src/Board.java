@@ -55,7 +55,7 @@ public class Board extends JPanel{
 
     }
 
-    Piece getPiece(int col, int row){
+    Piece getPiece(int col, int row){  //return a piece in the piece_list with given collumn and row
         for (Piece piece : piece_list) {
             if (piece.col == col && piece.row == row) {
                 return piece;
@@ -75,7 +75,7 @@ public class Board extends JPanel{
 
     void capture(Move move){
         piece_list.remove(move.capture);
-    }
+    } //to perform capture
     boolean isValidMove(Move move){
         if (sameTeam(move.piece,move.capture)) {
             return false;

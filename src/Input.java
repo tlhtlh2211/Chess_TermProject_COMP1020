@@ -24,7 +24,7 @@ public class Input extends MouseAdapter {
         if (board.selectedPiece != null){
             board.selectedPiece.x_pos = e.getX() - board.title_size/2; //the piece will be at the center of the mouse
             board.selectedPiece.y_pos = e.getY() - board.title_size/2;
-            board.repaint(); //why need this?
+            board.repaint();
         }
     }
 

@@ -14,7 +14,7 @@ public class Move {
         this.newRow = newRow;
 
         this.piece = piece;
-        this.capture = board.getPiece(newCol, newRow);
+        this.capture = board.getPiece(newCol, newRow); //return the piece at the final position
 
     }
 
