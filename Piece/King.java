@@ -2,8 +2,8 @@ package Piece;
 
 import java.awt.image.BufferedImage;
 
-import Chess_TermProject_COMP1020.ChessGame.Board;
-import Chess_TermProject_COMP1020.ChessGame.Movement;
+import ChessGame.Board;
+import ChessGame.Movement;
 
 public class King extends Piece {
     public King(Board board, int column, int row, boolean isWhite){

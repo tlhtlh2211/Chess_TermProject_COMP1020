@@ -2,7 +2,7 @@ package Piece;
 
 import java.awt.image.BufferedImage;
 
-import Chess_TermProject_COMP1020.ChessGame.Board;
+import ChessGame.Board;
 
 public class Pawn extends Piece {
     public Pawn(Board board, int column, int row, boolean isWhite){

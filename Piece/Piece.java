@@ -2,7 +2,7 @@ package Piece;
 
 import javax.imageio.ImageIO;
 
-import Chess_TermProject_COMP1020.ChessGame.Board;
+import ChessGame.Board;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -24,7 +24,7 @@ public class Piece {
     BufferedImage sheet;    
     {
     try {
-        File file = new File("/Users/tranlehai/OOP/Chess/src/resouces/Pieces.png");
+        File file = new File("D:/VinUni/OOP/Chess_TermProject_COMP1020/Resource/Pieces.png");
         sheet = ImageIO.read(file);
         } 
     catch (IOException e) {

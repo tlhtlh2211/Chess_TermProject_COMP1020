@@ -4,13 +4,13 @@ package ChessGame;
 
 import javax.swing.*;
 
-import Chess_TermProject_COMP1020.Piece.Bishop;
-import Chess_TermProject_COMP1020.Piece.King;
-import Chess_TermProject_COMP1020.Piece.Knight;
-import Chess_TermProject_COMP1020.Piece.Pawn;
-import Chess_TermProject_COMP1020.Piece.Piece;
-import Chess_TermProject_COMP1020.Piece.Queen;
-import Chess_TermProject_COMP1020.Piece.Rook;
+import Piece.Bishop;
+import Piece.King;
+import Piece.Knight;
+import Piece.Pawn;
+import Piece.Piece;
+import Piece.Queen;
+import Piece.Rook;
 
 import java.awt.*;
 import java.util.*;
