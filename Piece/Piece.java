@@ -2,7 +2,7 @@ package Piece;
 
 import javax.imageio.ImageIO;
 
-import ChessGame.Board;
+import Chess_TermProject_COMP1020.ChessGame.Board;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -18,12 +18,13 @@ public class Piece {
     public int value;
 
     public boolean firstMove = true;
-
     public int times = 0;
+
+
     BufferedImage sheet;    
     {
     try {
-        File file = new File("D:/VinUni/OOP/Chess_TermProject_COMP1020/Resource/Pieces.png");
+        File file = new File("/Users/tranlehai/OOP/Chess/src/resouces/Pieces.png");
         sheet = ImageIO.read(file);
         } 
     catch (IOException e) {

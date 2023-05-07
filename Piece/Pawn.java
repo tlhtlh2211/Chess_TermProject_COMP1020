@@ -2,7 +2,7 @@ package Piece;
 
 import java.awt.image.BufferedImage;
 
-import ChessGame.Board;
+import Chess_TermProject_COMP1020.ChessGame.Board;
 
 public class Pawn extends Piece {
     public Pawn(Board board, int column, int row, boolean isWhite){
@@ -15,6 +15,8 @@ public class Pawn extends Piece {
         this.isWhite = isWhite;
         this.name = "Pawn";
 
+        this.times = 0; 
+        
         this.sprite = sheet.getSubimage(5 * sheetScale, isWhite ? 0 : sheetScale, sheetScale, sheetScale).getScaledInstance(board.titleSize, board.titleSize, BufferedImage.SCALE_SMOOTH);
     }
     public boolean isvalidMove(int column, int row) {

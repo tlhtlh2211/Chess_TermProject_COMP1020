@@ -1,8 +1,7 @@
 package Piece;
-
 import java.awt.image.BufferedImage;
 
-import ChessGame.Board;
+import Chess_TermProject_COMP1020.ChessGame.Board;
 
 public class Knight extends Piece {
     public Knight(Board board, int column, int row, boolean isWhite){

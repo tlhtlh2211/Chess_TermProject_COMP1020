@@ -1,15 +1,16 @@
 package ChessGame;
 
 
+
 import javax.swing.*;
 
-import Piece.Bishop;
-import Piece.King;
-import Piece.Knight;
-import Piece.Pawn;
-import Piece.Piece;
-import Piece.Queen;
-import Piece.Rook;
+import Chess_TermProject_COMP1020.Piece.Bishop;
+import Chess_TermProject_COMP1020.Piece.King;
+import Chess_TermProject_COMP1020.Piece.Knight;
+import Chess_TermProject_COMP1020.Piece.Pawn;
+import Chess_TermProject_COMP1020.Piece.Piece;
+import Chess_TermProject_COMP1020.Piece.Queen;
+import Chess_TermProject_COMP1020.Piece.Rook;
 
 import java.awt.*;
 import java.util.*;
@@ -50,6 +51,7 @@ public class Board extends JPanel {
         pieceList.clear();
         addPiece();
         Main.isWhiteTurn = Main.ini;
+        enPassant = -1;
     }
 
     public Piece getPiece(int column, int row){
@@ -65,7 +67,7 @@ public class Board extends JPanel {
 
     public void undoPiece(){
         int step = taskPerformed.pop();
-        System.out.print(step);
+        //System.out.print(step);
         for (int i = 0; i < step; i++){
             Movement move = undoList.pop();
             String task = taskName.pop();
@@ -102,13 +104,13 @@ public class Board extends JPanel {
                 }
             }
             else if (task.equals("remove")){
-                System.out.print("remove");
+                //System.out.print("remove");
                 //move.piece.column = move.newColumn;
                 //move.piece.row = move.newRow;
                 pieceList.add(move.piece);
             }
             else if (task.equals("romote")){
-                System.out.print("promote");
+                //System.out.print("promote");
                 pieceList.add(new Pawn(this, move.preColumn, move.preRow, move.piece.isWhite));
                 if (move.piece.times > 1){
                     getPiece(move.preColumn, move.preRow).firstMove = false;

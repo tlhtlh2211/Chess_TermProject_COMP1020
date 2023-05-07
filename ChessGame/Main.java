@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.*;
+
 public class Main extends JFrame{
 
     public static boolean isWhiteTurn;
@@ -42,7 +44,7 @@ public class Main extends JFrame{
         
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new Main().setVisible(true);
+                    new Main();
                 }
             });
     }
