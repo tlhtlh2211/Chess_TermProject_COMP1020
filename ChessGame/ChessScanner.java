@@ -1,6 +1,6 @@
 package ChessGame;
 
-import Chess_TermProject_COMP1020.Piece.Piece;
+import Piece.Piece;
 
 public class ChessScanner {
     Board board;
