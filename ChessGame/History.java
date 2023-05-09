@@ -1,6 +1,5 @@
 package ChessGame;
 
-package Chess_TermProject_COMP1020.ChessGame;
 
 import java.util.*;
 import java.io.BufferedReader;

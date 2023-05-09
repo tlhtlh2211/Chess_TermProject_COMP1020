@@ -220,15 +220,19 @@ public class Board extends JPanel {
         if (Team(move.piece, move.newPiece)){
             return false;
         }
+
         if (!move.piece.isvalidMove(move.newColumn, move.newRow)){
             return false;
         }
-        if (move.piece.Collide(move.newColumn, move.newRow)){
+
+        if (!move.piece.Collide(move.newColumn, move.newRow)){
             return false;
         }
+
         if (chessScanner.isKingChecked(move)){
             return false;
         }
+
         return true;
     }
 

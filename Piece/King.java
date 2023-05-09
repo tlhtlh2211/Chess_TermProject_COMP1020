@@ -23,7 +23,7 @@ public class King extends Piece {
         return Math.abs((column - this.column)*(row - this.row)) == 1 || Math.abs(column - this.column) + Math.abs(row - this.row) == 1 || canCastle(column, row);
     }
 
-    public boolean Collide(int column, int row) {return false;}
+    //public boolean Collide(int column, int row) {return false;}
 
     private boolean canCastle(int column, int row){
 

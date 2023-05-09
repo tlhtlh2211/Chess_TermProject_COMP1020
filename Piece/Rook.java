@@ -36,7 +36,7 @@ public class Rook extends Piece {
                 if (board.getPiece(this.column, r) != null) return true;
         }
         // Check Down
-        if (this.row > row){
+        if (this.row < row){
             for (int r = this.row + 1; r < row; r ++)
                 if (board.getPiece(this.column, r) != null) return true;
         }
