@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class Board extends JPanel{
+    //why use this?
     int col = 8;
     int row = 8;
     public int title_size = 85;
