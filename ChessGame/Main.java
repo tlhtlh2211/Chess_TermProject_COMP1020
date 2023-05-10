@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 public class Main extends JFrame{
-
+	//test
     public static boolean isWhiteTurn;
     public static boolean canPlay = false;
     static int colorChange = 0;
