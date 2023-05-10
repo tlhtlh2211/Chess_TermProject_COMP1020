@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Board extends JPanel {
     public int titleSize = 85;
-
+    //why need these?
     int column = 8;
     int rows = 8;
 
