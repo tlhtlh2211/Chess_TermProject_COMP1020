@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 
 public class Pawn extends Piece{
+    ;
     Pawn(Board board, int col, int row, boolean isWhite){
         super(board);
         this.col = col;
@@ -19,4 +20,5 @@ public class Pawn extends Piece{
         this.sprite = sheet.getSubimage(scale * 5, y_pos_sprite, scale, scale).getScaledInstance(board.title_size, board.title_size, BufferedImage.SCALE_SMOOTH);
 
     }
+
 }

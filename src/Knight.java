@@ -19,4 +19,20 @@ public class Knight extends Piece{
         this.sprite = sheet.getSubimage(scale * 3, y_pos_sprite, scale, scale).getScaledInstance(board.title_size, board.title_size, BufferedImage.SCALE_SMOOTH);
 
     }
+
+    boolean isValidMovement(int col, int row){ //to check if a piece can reach a square: (col,row)
+        if (col == this.col + 1 && row == this.row + 2){
+            return true;
+        }
+        if (col == this.col - 1 && row == this.row + 2){
+            return true;
+        }
+        if (col == this.col + 1 && row == this.row - 2){
+            return true;
+        }
+        if (col == this.col - 1 && row == this.row - 2){
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,3 +1,9 @@
+/*
+How to move:
+- When the mouse is clicked, we check if there is a piece there. If yes, it is the selected piece.
+-
+*/
+
 public class Move {
     int oldCol;
     int newCol;

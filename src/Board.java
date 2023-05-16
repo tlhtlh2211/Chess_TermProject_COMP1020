@@ -80,6 +80,9 @@ public class Board extends JPanel{
         if (sameTeam(move.piece,move.capture)) {
             return false;
         }
+        if (!move.piece.isValidMovement(move.newCol,move.newRow)){
+            return false;
+        }
         return true;
     }
 
@@ -117,10 +120,21 @@ public class Board extends JPanel{
 
             }
         }
+        if (selectedPiece != null)
+        for (int r = 0; r < 8; r++){
+            for (int c = 0; c < 8; c++){
+                if (isValidMove(new Move(this, selectedPiece, c,r))){
+                    g2d.setColor(new Color(73, 68, 68));
+                    g2d.fillRect(c*title_size,r*title_size,title_size,title_size);
+                }
+            }
+        }
 
         for (Piece piece : piece_list){
             piece.printpiece(g2d);
         }
+
+
 
 
     }

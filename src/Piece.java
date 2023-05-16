@@ -12,7 +12,13 @@ public class Piece {
     public boolean isWhite;
     public int value;
     public String name;
+    boolean isValidMovement(int col, int row){ //to check if a piece can reach a square: (col,row)
+        return true;
+    }
 
+    boolean collide(int col, int row){ //to check if there is any other piece in square: (col,row)
+        return false;
+    }
     BufferedImage sheet;
     {
         try {
