@@ -71,6 +71,7 @@ public class Board extends JPanel{
         move.piece.x_pos = move.piece.col * title_size;
         move.piece.y_pos = move.piece.row * title_size;
         capture(move);
+        move.piece.isFirstmove = false;
     }
 
     void capture(Move move){

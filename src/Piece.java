@@ -12,6 +12,7 @@ public class Piece {
     public boolean isWhite;
     public int value;
     public String name;
+    boolean isFirstmove = true;
     boolean isValidMovement(int col, int row){ //to check if a piece can reach a square: (col,row)
         return true;
     }
