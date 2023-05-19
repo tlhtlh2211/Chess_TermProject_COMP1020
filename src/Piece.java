@@ -16,9 +16,9 @@ public class Piece {
         return true;
     }
 
-    boolean collide(int col, int row){ //to check if there is any other piece in square: (col,row)
+    boolean collide(int col, int row){
         return false;
-    }
+    } //to check if is there any obstacle on the way from current position of the piece to square (col, row)
     BufferedImage sheet;
     {
         try {

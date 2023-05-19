@@ -19,4 +19,10 @@ public class Bishop extends Piece{
         this.sprite = sheet.getSubimage(scale * 2, y_pos_sprite, scale, scale).getScaledInstance(board.title_size, board.title_size, BufferedImage.SCALE_SMOOTH);
 
     }
+    boolean isValidMovement(int col, int row){ //to check if a piece can reach a square: (col,row)
+        if (Math.abs(this.col - col) == Math.abs(this.row - row)){
+            return true;
+        }
+        return false;
+    }
 }

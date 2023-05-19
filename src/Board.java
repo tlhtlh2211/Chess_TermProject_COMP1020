@@ -83,6 +83,9 @@ public class Board extends JPanel{
         if (!move.piece.isValidMovement(move.newCol,move.newRow)){
             return false;
         }
+        if (move.piece.collide(move.newCol, move.newRow) == true){
+            return false;
+        }
         return true;
     }
 
