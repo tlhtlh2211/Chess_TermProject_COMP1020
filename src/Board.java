@@ -9,10 +9,11 @@ public class Board extends JPanel{
     int col = 8;
     int row = 8;
     public int title_size = 85;
-
+    GUItimer guItimer;
     ArrayList<Piece> piece_list = new ArrayList<Piece>();
     Piece selectedPiece; //for moving piece
     Input input = new Input(this);
+    int enpassanttile  = -1;
     Board(){
         this.setPreferredSize(new Dimension(col*title_size,row*title_size));
         //this.setBackground(Color.red);
@@ -49,6 +50,8 @@ public class Board extends JPanel{
         this.addMouseListener(input);
         this.addMouseMotionListener(input);
 
+        guItimer = new GUItimer();
+        this.add(guItimer);
 
 //        piece_list.add(black_knight_1);
 //        piece_list.add(black_knight_2);
@@ -72,7 +75,21 @@ public class Board extends JPanel{
         move.piece.y_pos = move.piece.row * title_size;
         capture(move);
         move.piece.isFirstmove = false;
+
     }
+
+//    void movePawn(Move move){
+//        //enpassant
+//        if (move.piece.isWhite){
+//
+//        }
+//        move.piece.col = move.newCol;
+//        move.piece.row = move.newRow;
+//        move.piece.x_pos = move.piece.col * title_size;
+//        move.piece.y_pos = move.piece.row * title_size;
+//        capture(move);
+//        move.piece.isFirstmove = false;
+//    }
 
     void capture(Move move){
         piece_list.remove(move.capture);
@@ -96,6 +113,10 @@ public class Board extends JPanel{
         } else {
             return p1.isWhite == p2.isWhite;
         }
+    }
+
+    int getTilenum(int c, int r){
+        return r * row + c;
     }
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;

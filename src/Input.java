@@ -36,6 +36,15 @@ public class Input extends MouseAdapter {
             Move newMove = new Move(board, board.selectedPiece, col, row);
             if (board.isValidMove(newMove)){
                 board.makeMove(newMove);
+                if (board.guItimer.turn == 1){
+                    board.guItimer.timer1.stop();
+                    board.guItimer.timer2.start();
+                    board.guItimer.turn = 2;
+                } else if (board.guItimer.turn == 2){
+                    board.guItimer.timer2.stop();
+                    board.guItimer.timer1.start();
+                    board.guItimer.turn = 1;
+                }
             } else {
                 board.selectedPiece.x_pos = board.selectedPiece.col * board.title_size;
                 board.selectedPiece.y_pos = board.selectedPiece.row * board.title_size;

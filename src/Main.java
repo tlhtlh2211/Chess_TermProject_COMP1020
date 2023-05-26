@@ -13,7 +13,12 @@ public class Main{
 
 
         Board board = new Board();
+
+        //guitimer.setBounds(20,20,200,200);
         frame.add(board);
+
+
+
 
         frame.setVisible(true);
     }
