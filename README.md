@@ -3,7 +3,7 @@
     - Mac: Run Main.java
     - Window: 
         - Open folder Stockfish Engine, copy the folder inside (stockfish_15.1_win_x64_avx2).
-        - Open src/ChessEngine, replace the folder inside with the folder previously copy (stockfish_15.1_win_x64_avx2).
+        - Open src/ChessEngine, replace all the folders inside with the folder previously copy (stockfish_15.1_win_x64_avx2).
         - Open stockfish_15.1_win_x64_avx2, copy the path of the exe file inside.
         - Open Engine/Stockfish.java. At line 14, replace the path with the path of the exe file has just been copied.
         - Run Main.java
