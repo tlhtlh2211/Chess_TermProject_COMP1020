@@ -26,8 +26,6 @@ public class Board extends JPanel {
 
     public ChessScanner chessScanner = new ChessScanner(this);
 
-    public StaleMate stalemate = new StaleMate(this);
-
     public int enPassant = -1;
 
     public EncodeFenString encode = new EncodeFenString(this);
