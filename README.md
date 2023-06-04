@@ -1,4 +1,9 @@
 # Chess_TermProject_COMP1020
+- How to run the game:
+    - Mac: Run the class Main.java
+    - Window: 
+        - Open folder Stockfish Engine, copy the folder inside.
+        - Open src
 
 - Idea:
     
