@@ -1,5 +1,5 @@
 # Chess_TermProject_COMP1020
-- How to run the game:
+- How to run the game:  
     - Mac: Run Main.java
     - Window: 
         - Open folder Stockfish_Engine_Window, copy the folder inside (stockfish_15.1_win_x64_avx2).
@@ -7,7 +7,7 @@
         - Open stockfish_15.1_win_x64_avx2, copy the path of the exe file inside.
         - Open Engine/Stockfish.java. At line 14, replace the path with the path of the exe file has just been copied.
         - Run Main.java
-
+    - Note: To adjust the size of the table to fit your screen, you can modify the "Tiltesize" value in the Board.java file. Make sure to set the value within the range of 90 to 120.
 - Idea:
     
     Chess game for two opposing players with standard rules.
