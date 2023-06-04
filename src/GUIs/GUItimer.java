@@ -79,6 +79,18 @@ public class GUItimer extends JPanel {
                 }
                 if (minute1 == 0 && second1 == 0){
                     timer1.stop();
+                    repaint();
+                        int n = JOptionPane.showConfirmDialog(
+                        null,
+                        "BLACK WIN",
+                    "Wanna play again?",
+                        JOptionPane.YES_NO_OPTION);
+                        if (n == JOptionPane.YES_OPTION){
+                            Restart();
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "GOODBYE");
+                        }
                 }
             }
 
@@ -100,6 +112,18 @@ public class GUItimer extends JPanel {
                 }
                 if (minute2 == 0 && second2 == 0){
                     timer2.stop();
+                    repaint();
+                        int n = JOptionPane.showConfirmDialog(
+                        null,
+                        "WHITE WIN",
+                    "Wanna play again?",
+                        JOptionPane.YES_NO_OPTION);
+                        if (n == JOptionPane.YES_OPTION){
+                            Restart();
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "GOODBYE");
+                        }
                 }
             }
         });
